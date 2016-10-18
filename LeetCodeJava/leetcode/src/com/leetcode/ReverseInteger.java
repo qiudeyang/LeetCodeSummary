@@ -1,30 +1,30 @@
 package com.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by qiudeyang on 07/06/16.
  */
-class Solution {
+class Solution7 {
     public int reverseInteger(int x) {
-        String a = " " + x;
-        if (a.contains("-")) {
-            char[]  array = a.toCharArray();
-            char[]  array1 = new char[array.length-1];
-            for(int i = 0;i < array1.length;i++){
-                array1[i] = array[array.length-1-i];
+        int result = 0;
+        while (x != 0) {
+            int tail = x % 10;
+            int newResult = result * 10 + tail;
+            if ((newResult - tail) / 10 != result) {
+                return 0;
             }
-            String b = "-"+array1.toString();
-            System.out.println(b);
-            return 1;
-        } else {
-            StringBuffer s = new StringBuffer(a);
-            s.reverse();
-            return Integer.parseInt(s.toString());
+            result = newResult;
+            x = x / 10;
         }
+        return result;
     }
 }
+
 public class ReverseInteger {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.reverseInteger(1234));
+        Solution7 solution7 = new Solution7();
+        System.out.println(solution7.reverseInteger(1534236469));
     }
 }
