@@ -7,18 +7,9 @@ import java.util.Arrays;
  */
 class Solution338 {
     public int[] countBits(int num) {
-        int temp = 0;
         int[] array = new int[num+1];
-        for(int i = 0; i <= num;i++){
-            while(i != 0){
-                if((i & 1) == 1){
-                    temp++;
-                }
-                i = i >> 1;
-                System.out.println(i);
-            }
-            array[i] = temp;
-            temp = 0;
+        for (int i = 1; i <=num ; i++) {
+            array[i] = array[i >> 1] + (1 & i);
         }
         return array;
     }
