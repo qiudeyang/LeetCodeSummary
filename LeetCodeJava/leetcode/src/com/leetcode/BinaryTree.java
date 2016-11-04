@@ -1,6 +1,8 @@
 package com.leetcode;
 
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by qiudeyang on 12/10/16.
@@ -42,19 +44,21 @@ public class BinaryTree {
 
     public int getMax() {
         TreeNode node = root;
-        while (node.left != null) {
-            node = node.left;
+        while (node.right != null) {
+            node = node.right;
         }
         return node.val;
     }
 
     public int getMin() {
         TreeNode node = root;
-        while (node.right != null) {
-            node = node.right;
+        while (node.left != null) {
+            node = node.left;
         }
         return node.val;
     }
+
+    //以下是递归方式前序遍历二叉树
 
     public void preOrderTreeWalk(TreeNode node, LinkedList<Integer> container) {
         if (node != null) {
@@ -64,6 +68,42 @@ public class BinaryTree {
         }
     }
 
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> list = new LinkedList<Integer>();
+        if (root == null){
+            return list;
+        }
+        list.add(root.val);
+        list.addAll(preorderTraversal(root.left));
+        list.addAll(preorderTraversal(root.right));
+        return list;
+
+    }
+
+    //以下是遍历方式前序遍历二叉树，利用**栈**的特性
+
+    public List<Integer> preorderTraversal1(TreeNode root) {
+        List<Integer> list = new LinkedList<Integer>();
+        if (root == null){
+            return list;
+        }
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode temp = stack.pop();
+            list.add(temp.val);
+            if (temp.right != null){
+                stack.push(temp.right);
+            }
+            if (temp.left != null){
+                stack.push(temp.left);
+            }
+        }
+        return list;
+    }
+
+    //以下是递归方式中序遍历二叉树
+
     public void midOrderTreeWalk(TreeNode node, LinkedList<Integer> container) {
         if (node != null) {
             midOrderTreeWalk(node.left, container);
@@ -72,12 +112,59 @@ public class BinaryTree {
         }
     }
 
+    //以下是遍历方式中序遍历二叉树，依旧使用栈
+
+    public List<Integer> midorderTraversal(TreeNode root) {
+        List<Integer> list = new LinkedList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode current = root;
+        while (current != null || !stack.empty()){
+            while (current != null){
+                stack.push(current);
+                current = current.left;
+            }
+            current = stack.pop();
+            list.add(current.val);
+            current = current.right;
+        }
+        return list;
+    }
+
+    //以下是递归方式后序遍历二叉树
+
     public void postOrderTreeWalk(TreeNode node, LinkedList<Integer> container) {
         if (node != null) {
             postOrderTreeWalk(node.left, container);
             postOrderTreeWalk(node.right, container);
             container.add(node.val);
+
         }
+
+    }
+
+    //以下是遍历方式层序遍历二叉树，利用队列的性质，从上到小，从左往右
+
+    public List<Integer> testLevelOrder(TreeNode root) {
+        List<Integer> list = new LinkedList<Integer>();
+        if (root == null) {
+            return list;
+        }
+
+        List<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        list.add(root.val);
+        while (!queue.isEmpty()) {
+            TreeNode temp = queue.remove(0);
+            if (temp.left != null) {
+                queue.add(temp.left);
+                list.add(temp.left.val);
+            }
+            if (temp.right != null) {
+                queue.add(temp.right);
+                list.add(temp.right.val);
+            }
+        }
+        return list;
     }
 
     public TreeNode search(int val) {
