@@ -1,8 +1,8 @@
 package com.leetcode;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import com.sun.jmx.remote.internal.ArrayQueue;
+
+import java.util.*;
 
 /**
  * Created by qiudeyang on 12/10/16.
@@ -307,6 +307,41 @@ public class BinaryTree {
         return successor;
     }
 
+    public int findDepth(TreeNode root) {
+        if (root == null){
+            return 0;
+        }
+        int leftDepth = findDepth(root.left);
+        int rightDepth = findDepth(root.right);
+        return Math.max(leftDepth,rightDepth)+1;
+    }
+
+    public  int getMaxWidth(TreeNode root){
+        if (root == null){
+            return 0;
+        }
+        Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
+        int maxWidth = 1;
+        queue.add(root);
+        while (true){
+            int len = queue.size();
+            if (len == 0){
+                break;
+            }
+            while (len > 0){
+                TreeNode temp = queue.poll();
+                len--;
+                if (temp.left != null){
+                    queue.add(temp.left);
+                }
+                if (temp.right != null){
+                    queue.add(temp.right);
+                }
+            }
+            maxWidth = Math.max(maxWidth,queue.size());
+        }
+        return maxWidth;
+    }
     public int size() {
         return this.size;
     }

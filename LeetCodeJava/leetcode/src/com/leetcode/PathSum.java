@@ -6,6 +6,19 @@ import java.util.List;
 /**
  * Created by qiudeyang on 13/10/16.
  */
+class Solution112 {
+    //以下是使用递归的方法
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) {
+            return false;
+        }
+        if (root.left == null && root.right == null && root.val == sum) {
+            return true;
+        }
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+    }
+}
+
 public class PathSum {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(5);
@@ -18,16 +31,7 @@ public class PathSum {
         root.left.left.right = new TreeNode(2);
         root.right.right.right = new TreeNode(1);
 
-        BinaryTree bTree = new BinaryTree();
-        LinkedList<Integer> list = new LinkedList<Integer>();
-        list.clear();
-        bTree.preOrderTreeWalk(root,list);
-        System.out.println(list);
-        list.clear();
-        bTree.midOrderTreeWalk(root,list);
-        System.out.println(list);
-        list.clear();
-        bTree.postOrderTreeWalk(root,list);
-        System.out.println(list);
+        Solution112 solution112 = new Solution112();
+        System.out.println(solution112.hasPathSum(root, 22));
     }
 }
