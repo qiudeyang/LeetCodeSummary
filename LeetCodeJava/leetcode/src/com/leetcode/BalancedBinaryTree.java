@@ -8,6 +8,14 @@ import java.util.List;
  */
 class Solution110 {
     public boolean isBalanced(TreeNode root) {
+        if (root == null){
+            return true;
+        }
+        int left = heightBinaryTree(root.left);
+        int right = heightBinaryTree(root.right);
+        return Math.abs(left-right) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+    }
+    public boolean isBalanced1(TreeNode root) {
         List<TreeNode> list = new LinkedList<TreeNode>();
         preOrder(root,list);
         for (int i = 0; i < list.size(); i++) {
@@ -44,6 +52,26 @@ class Solution110 {
         int rightHeight = heightBinaryTree(root.right);
         return Math.max(leftHeight, rightHeight) + 1;
     }
+    public boolean isBalanced3(TreeNode root){
+        return dfsHeight(root) != -1;
+    }
+    public int dfsHeight(TreeNode root){
+        if (root == null){
+            return 0;
+        }
+        int leftHeight = dfsHeight(root.left);
+        if (leftHeight == -1){
+            return -1;
+        }
+        int rightHeight = dfsHeight(root.right);
+        if (rightHeight == -1){
+            return -1;
+        }
+        if (Math.abs(leftHeight-rightHeight) > 1){
+            return -1;
+        }
+        return Math.max(leftHeight,rightHeight)+1;
+    }
 }
 
 public class BalancedBinaryTree {
@@ -53,9 +81,9 @@ public class BalancedBinaryTree {
         root.left = new TreeNode(4);
         root.right = new TreeNode(8);
         root.left.left = new TreeNode(11);
-//        root.left.left.left = new TreeNode(15);
+        root.left.left.left = new TreeNode(15);
         root.right.left = new TreeNode(13);
         root.right.right = new TreeNode(4);
-        System.out.println(solution110.isBalanced(root));
+        System.out.println(solution110.isBalanced3(root));
     }
 }

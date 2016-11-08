@@ -74,7 +74,7 @@ public class BinaryTree {
             return list;
         }
         list.add(root.val);
-        list.addAll(preorderTraversal(root.left));
+        list.addAll(preorderTraversal(root.left));   //添加整个列表元素
         list.addAll(preorderTraversal(root.right));
         return list;
 
