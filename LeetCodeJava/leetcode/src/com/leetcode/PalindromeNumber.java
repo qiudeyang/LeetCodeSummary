@@ -9,20 +9,22 @@ class Solution9 {
     public boolean isPalindrome(int x) {
         if (x < 0) {
             return false;
-        }
-        if (x < 10 && x >= 0) {
+        }else if(x < 10){
             return true;
-        }
-        StringBuffer sb = new StringBuffer(""+x);
-        System.out.println(Integer.valueOf(sb.toString()));
-        System.out.println(sb.reverse());
-        System.out.println(Integer.valueOf(sb.toString()).equals(Integer.valueOf((sb.reverse()).toString())));
-        if (sb.reverse().equals(sb)){
-            return true;
-        }else {
-            return false;
-        }
+        }else{
+            long temp1 = 0;
+            int temp2 = x;
+            while(temp2 != 0){
+                temp1 = temp1 * 10 + temp2 % 10;
+                temp2 = temp2 / 10;
+            }
+            if(temp1 == x){
+                return true;
+            }else{
+                return false;
+            }
 
+        }
     }
 }
 
