@@ -1,7 +1,9 @@
 package com.leetcode;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by qiudeyang on 07/06/16.
@@ -24,6 +26,19 @@ class Solution1 {
             System.out.println(nums2[i]);
         }
         return nums2;
+    }
+    public int[] twoSum1(int[] nums, int target) {
+        int[] result = new int[2];
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                result[1] = i;
+                result[0] = map.get(target - nums[i]);
+                return result;
+            }
+            map.put(nums[i], i);
+        }
+        return result;
     }
 }
 public class TwoSum {

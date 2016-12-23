@@ -9,45 +9,19 @@ import java.util.Scanner;
  */
 class Solution263 {
     public boolean isUgly(int num) {
-        List<Integer> list = new LinkedList<Integer>();
         if (num <= 0) {
             return false;
         }
-        if (num == 1) {
-            return true;
+        while (num % 2 == 0) {
+            num /= 2;
         }
-        int m = 2;
-        if (num % m == 0) {
-            isUgly(num / m);
-            list.add(m);
-            System.out.println(m);
-        } else {
-            if (m > 2) {
-                m += 2;
-                if (num % m == 0) {
-                    isUgly(num / m);
-                    list.add(m);
-                    System.out.println(m);
-                }
-            }
-            else {
-                m += 1;
-                if (num % m == 0) {
-                    isUgly(num / m);
-                    list.add(m);
-                    System.out.println(m);
-                }
-            }
+        while (num % 3 == 0) {
+            num /= 3;
         }
-        if (list.size() == 0) {
-            return false;
+        while (num % 5 == 0) {
+            num /= 5;
         }
-        if ((list.get(list.size() - 1)) > 5) {
-            System.out.println(list.get(list.size() - 1));
-            return false;
-        } else {
-            return true;
-        }
+        return num == 1;
     }
 }
 

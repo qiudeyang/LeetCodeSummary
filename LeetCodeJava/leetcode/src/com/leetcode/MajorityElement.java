@@ -46,12 +46,30 @@ class Solution169 {
         }
         return a;
     }
+    public int majorityElement1(int[] nums) {
+        int result = 0;
+        int number = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (number == 0){
+                result = nums[i];
+                number++;
+            }else{
+                if (result == nums[i]){
+                    number++;
+                }else {
+                    number--;
+                }
+            }
+        }
+        return result;
+    }
 }
 public class MajorityElement {
     public static void main(String[] args){
         Solution169 solution = new Solution169();
         int[] nums = {3,2,2,2,4,2,3};
         System.out.println(solution.majorityElement(nums));
+        System.out.println(solution.majorityElement1(nums));
     }
 }
 
