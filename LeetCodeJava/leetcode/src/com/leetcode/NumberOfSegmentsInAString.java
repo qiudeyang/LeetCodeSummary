@@ -5,8 +5,13 @@ package com.leetcode;
  */
 class Solution434 {
     public int countSegments(String s) {
-//        String[] array = ;
-        return s.trim().split(" ").length;
+        int result = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) !=' ' && (i==0 || s.charAt(i-1) == ' ')){
+                result++;
+            }
+        }
+        return result;
     }
 }
 
