@@ -9,8 +9,11 @@ import java.util.List;
 class Solution442 {
     public List<Integer> findDuplicates(int[] nums) {
         List<Integer> list = new LinkedList<Integer>();
-        if (nums == null || nums.length == 0) {
+        if (nums == null || nums.length <= 1) {
             return list;
+        }
+        for (int i = 0; i < nums.length; i++) {
+
         }
         return list;
     }

@@ -5,13 +5,12 @@ package com.leetcode;
  */
 class Solution8 {
     public int myAtoi(String str) {
-        char[] array = str.toCharArray();
-        for (int i = 0; i < array.length; i++) {
-            while(array[i] >= 0 && array[i] <=9){
-
-            }
+        if (str == null || str.length() == 0) {
+            return 0;
         }
-        return 3;
+        char[] array = str.toCharArray();
+
+        return 2;
     }
 
 }
