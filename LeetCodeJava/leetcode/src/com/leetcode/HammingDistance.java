@@ -12,7 +12,7 @@ class Solution461 {
             count++;
         }
         return count;
-//        return Integer.bitCount(x^y);
+//        return Integer.bitCount(x^y);直接用现成的api反而更快
     }
 }
 public class HammingDistance {
