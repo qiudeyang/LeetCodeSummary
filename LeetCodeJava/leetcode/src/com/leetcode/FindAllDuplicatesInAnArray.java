@@ -6,6 +6,9 @@ import java.util.List;
 /**
  * Created by qiudeyang on 15/12/16.
  */
+//要求：不使用额外空间，时间复杂度为O（n）。
+// when find a number i, flip the number at position i-1 to negative.
+// if the number at position i-1 is already negative, i is the number that occurs twice
 class Solution442 {
     public List<Integer> findDuplicates(int[] nums) {
         List<Integer> list = new LinkedList<Integer>();
@@ -13,7 +16,11 @@ class Solution442 {
             return list;
         }
         for (int i = 0; i < nums.length; i++) {
-
+            int index = Math.abs(nums[i]) - 1;
+            if (nums[index] < 0) {
+                list.add(index + 1);
+            }
+            nums[index] = -nums[index];
         }
         return list;
     }

@@ -5,34 +5,32 @@ package com.leetcode;
  */
 class Solution419 {
     public int countBattleships(char[][] board) {
-        int m = board.length;
-        if (m == 0) {
+        if (board == null || board.length == 0) {
             return 0;
         }
-        int n = board[0].length;
-        int count = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == 'N'){
+        int result = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j]=='.'){
                     continue;
                 }
-                if (i > 0 && board[i-1][j] == 'X'){
+                if (i>0 && board[i-1][j]=='X'){
                     continue;
                 }
-                if (j > 0 && board[i][j-1] == 'X'){
+                if (j>0 && board[i][j-1]=='X'){
                     continue;
                 }
-                count++;
+                result++;
             }
         }
-        return count;
+        return result;
     }
 }
 
 public class BattleshipsInABoard {
     public static void main(String[] args) {
         Solution419 solution419 = new Solution419();
-        char[][] board = {{'X', 'N', 'N', 'X'}, {'N', 'N', 'N', 'X'}, {'N', 'N', 'N', 'X'}};
+        char[][] board = {{'X', '.', '.', 'X'}, {'.', '.', '.', 'X'}, {'.', '.', '.', 'X'}};
         System.out.println(solution419.countBattleships(board));
     }
 }
