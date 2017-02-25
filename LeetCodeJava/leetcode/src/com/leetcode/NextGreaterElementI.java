@@ -20,7 +20,7 @@ class Solution496 {
         }
         for (int i = 0; i < findNums.length; i++) {
 //            getOrDefault是jdk1.8新增的特性。
-//            findNums[i] = map.getOrDefault(findNums[i],-1);
+            findNums[i] = map.getOrDefault(findNums[i],-1);
         }
         return findNums;
     }
