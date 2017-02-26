@@ -79,6 +79,30 @@ class Solution199 {
         }
         return list;
     }
+    public static List<Integer> binaryTreeRightSideView(TreeNode root) {
+        List<Integer> list = new LinkedList<>();
+        if (root == null) {
+            return list;
+        }
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            TreeNode last = null;
+            for (int i = 0; i < size; i++) {
+                TreeNode temp = queue.poll();
+                if (temp.left != null) {
+                    queue.offer(temp.left);
+                }
+                if (temp.right != null) {
+                    queue.offer(temp.right);
+                }
+                last = temp;
+            }
+            list.add(last.val);
+        }
+        return list;
+    }
 }
 
 public class BinaryTreeRightSideView {
