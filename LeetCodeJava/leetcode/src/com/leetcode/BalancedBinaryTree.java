@@ -52,24 +52,31 @@ class Solution110 {
         int rightHeight = heightBinaryTree(root.right);
         return Math.max(leftHeight, rightHeight) + 1;
     }
+
+//    以下是leetcode推荐的解法，基于DFS，返回DFS递归的当前结点高度，当当前结点的子树是平衡时，返回一个非负的数，否则返回-1，时间复杂度O（n）
     public boolean isBalanced3(TreeNode root){
         return dfsHeight(root) != -1;
     }
     public int dfsHeight(TreeNode root){
+//        树为空
         if (root == null){
             return 0;
         }
+//        左子树不为平衡树
         int leftHeight = dfsHeight(root.left);
         if (leftHeight == -1){
             return -1;
         }
+//        右子树不为平衡树
         int rightHeight = dfsHeight(root.right);
         if (rightHeight == -1){
             return -1;
         }
+//        左右子树高度差大于1，不为平衡树
         if (Math.abs(leftHeight-rightHeight) > 1){
             return -1;
         }
+//        root为平衡树，返回一个非负的树高度。
         return Math.max(leftHeight,rightHeight)+1;
     }
 }
