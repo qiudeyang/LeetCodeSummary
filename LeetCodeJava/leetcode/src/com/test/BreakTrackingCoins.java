@@ -1,9 +1,9 @@
 package com.test;
 
 /**
- * Created by qiudeyang on 12/03/17.
+ * Created by qiudeyang on 15/03/17.
  */
-public class ExchangeCoins {
+public class BreakTrackingCoins {
     static int count;
     public static int exchangeCoins(int sum){
         int[] array = {5,2,1};
@@ -12,11 +12,11 @@ public class ExchangeCoins {
     }
 
     public static void exchangeCoins(int sum,int currentSum,int[] array,int current){
-        if (currentSum == sum){
+        if (sum==currentSum){
             count++;
             return;
         }
-        if (currentSum > sum){
+        if (sum < currentSum){
             return;
         }
         for (int i = 0; i < array.length; i++) {
