@@ -20,10 +20,11 @@
 
 补充一下：以上是MySQL的解法，如果是PostgreSQL，则不需要`TO_Days`。
 
-
 178.[Rank Scores](https://leetcode.com/problems/rank-scores/#/description)
 
 `SELECT Score,(SELECT count(DISTINCT Score) FROM leetcode WHERE Score>=l.Score) AS rank FROM leetcode l ORDER BY Score DESC;`
+
+解释：`Score>=l.Score`判断其排名，ORDER BY Score DESC分数从大到小排序。
 
 180.[Consecutive Numbers](https://leetcode.com/problems/consecutive-numbers/#/description)
 
@@ -47,7 +48,7 @@
 
 `SELECT d.Name AS Department,e.Name AS Employee,e.Salary AS Salary FROM Employee AS e,Department AS d WHERE e.DepartmentId=d.Id AND Salary=(SELECT max(Salary) FROM Employee e2 WHERE e2.DepartmentId=d.Id);`
 
-这种题用不了GROUP BY语句。
+这种题用不了GROUP BY语句。难点在于`Salary=(SELECT max(Salary) FROM Employee e2 WHERE e2.DepartmentId=d.Id)`。
 
 177.[Nth Highest Salary](https://leetcode.com/problems/nth-highest-salary/#/description)
 
@@ -60,6 +61,8 @@ BEGIN
       
   );
 END
+
+巧妙使用`LIMIT M,1`，第一个参数是偏移量。
 
 262.[Trips and Users](https://leetcode.com/problems/trips-and-users/#/description)
 
