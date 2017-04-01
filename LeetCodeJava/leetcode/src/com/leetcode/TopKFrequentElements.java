@@ -7,36 +7,30 @@ import java.util.*;
  */
 class Solution347 {
     public List<Integer> topKFrequent(int[] nums, int k) {
-        List<Integer> list = new LinkedList<Integer>();
-        Hashtable<Integer,Integer> table = new Hashtable<Integer,Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!table.containsValue(nums[i])){
-                table.put(nums[i],1);
-            }else{
-                table.put(nums[i],table.get(nums[i])+1);
-            }
+        List<Integer> result = new LinkedList<>();
+        if (nums == null || nums.length < 1) {
+            return result;
         }
-        LinkedList<Integer>  arr1 = new LinkedList<Integer>(table.values());
-        Collections.sort(arr1,Collections.<Integer>reverseOrder());
-        int count = 0;
-        for (int i = 0; i < arr1.size(); i++) {
-            for (Integer getKey:table.keySet()) {
-                if (table.get(getKey).equals(arr1.get(i))){
-                    list.add(getKey);
-                    count++;
-                }
-            }
-            if (count == k){
-                break;
-            }
+        Map<Integer,Integer> map = new HashMap<Integer, Integer>();
+        for (int n:nums){
+            map.put(n,map.getOrDefault(n,0)+1);
         }
-        return list;
+        Queue<Map.Entry<Integer,Integer>> queue = new PriorityQueue<>((a,b) -> (b.getValue()-a.getValue()));
+        for (Map.Entry<Integer,Integer> entry:map.entrySet()){
+            queue.offer(entry);
+        }
+        while (result.size() < k){
+            Map.Entry<Integer,Integer> temp = queue.poll();
+            result.add(temp.getKey());
+        }
+        return result;
     }
 }
+
 public class TopKFrequentElements {
     public static void main(String[] args) {
         Solution347 solution347 = new Solution347();
-        int[] nums = {1,1,1,2,2,3};
-        System.out.println(solution347.topKFrequent(nums,2));
+        int[] nums = {1, 1, 1, 2, 2, 3};
+        System.out.println(solution347.topKFrequent(nums, 2));
     }
 }

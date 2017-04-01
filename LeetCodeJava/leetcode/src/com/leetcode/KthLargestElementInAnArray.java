@@ -7,12 +7,11 @@ import java.util.*;
  */
 class Solution215 {
     public int findKthLargest(int[] nums, int k) {
-        List<Integer> list = new LinkedList<Integer>();
-        for(int i = 0; i < nums.length;i++){
-            list.add(nums[i]);
+        if(nums == null || nums.length < 1 || nums.length < k){
+            return -1;
         }
-        Collections.sort(list, Collections.<Integer>reverseOrder());
-        return list.get(k-1);
+        Arrays.sort(nums);
+        return nums[nums.length-k];
     }
     //以下是使用优先队列求解
     public int findKthLargest1(int[] nums, int k) {
@@ -27,36 +26,39 @@ class Solution215 {
     }
     //以下是使用快速排序来求解
     public int findKthLargest2(int[] nums, int k) {
-        if (nums == null || nums.length == 0){
-            return Integer.MAX_VALUE;
+        if (nums == null || nums.length == 0 || nums.length < k){
+            return -1;
         }
         return findKthLargest(nums,0,nums.length-1,nums.length - k);
     }
     public int findKthLargest(int[] nums,int start,int end,int k){   //方法重载
         if (start > end){
-            return Integer.MAX_VALUE;
+            return -1;
         }
-        int pivot = nums[end];
-        int left = start;
-        for (int i = start; i < end; i++) {
-            if (nums[i] <= pivot){
-                swap(nums,left++,i);
-            }
-        }
-        swap(nums,left,end);
-        if (left == k){
-            return nums[left];
-        }else if (left < k){
-            return findKthLargest(nums,left+1,end,k);
+        int pos = helper(nums,start,end);
+        if (pos == k){
+            return nums[pos];
+        }else if (pos < k){
+            return findKthLargest(nums,pos+1,end,k);
         }else{
-            return findKthLargest(nums,start,left-1,k);
+            return findKthLargest(nums,start,pos-1,k);
         }
     }
 
-    public void swap(int[] nums,int i,int j){
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+    public int helper(int[] nums,int start,int end){
+        int pivot = nums[start];
+        while (start < end){
+            while (start < end && nums[end] >= pivot){
+                end--;
+            }
+            nums[start] = nums[end];
+            while (start < end && nums[start] <= pivot){
+                start++;
+            }
+            nums[end] = nums[start];
+        }
+        nums[start] = pivot;
+        return start;
     }
 
 }

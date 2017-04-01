@@ -1,16 +1,14 @@
 package com.leetcode;
 
+import java.util.Stack;
+
 /**
  * Created by qiudeyang on 26/07/16.
  */
-
-import java.util.EmptyStackException;
-import java.util.Stack;
-
 class Solution20 {
     public boolean isValid(String s) {
-        Stack<Character>  stack = new Stack<Character>();
-        if (s.length() % 2 == 1) {
+        Stack<Character> stack = new Stack<Character>();
+        if ((s.length() & 2) == 1) {
             return false;
         }
         for (int i = 0; i < s.length(); i++) {
