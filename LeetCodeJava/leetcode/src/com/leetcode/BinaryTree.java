@@ -26,6 +26,7 @@ class TreeNode {
     }
 }
 public class BinaryTree {
+
     private TreeNode root;
     private int size = 0;
 
