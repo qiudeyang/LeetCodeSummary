@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * Created by qiudeyang on 02/05/17.
  */
