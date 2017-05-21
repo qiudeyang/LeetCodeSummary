@@ -85,7 +85,9 @@ where 3 > (select count(distinct(e2.Salary)) from Employee e2 where e2.Salary > 
 
 根本看不懂啊....
 
+596. [Classes More Than 5 Students](https://leetcode.com/problems/classes-more-than-5-students/#/description)
 
+SELECT class FROM courses GROUP BY class HAVING count(DISTINCT student)>=5;
 
 
 
