@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="purejoin">
+    <output-path>$PROJECT_DIR$/out/artifacts/purejoin</output-path>
+    <root id="archive" name="main.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/../sparklearning/src/main/scala/META-INF/join/purejoin/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="main" />
+      <element id="extracted-dir" path="/opt/spark-1.2.0-bin-hadoop2.4/lib/spark-assembly-1.2.0-hadoop2.4.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/scala/lib/scala-actors-migration.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/scala/lib/scala-reflect.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/scala/lib/scala-swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/scala/lib/scala-library.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/scala/lib/scala-actors.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

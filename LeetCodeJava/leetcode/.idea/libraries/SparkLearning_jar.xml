@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="SparkLearning_jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../sparklearning/out/artifacts/SparkLearning_jar/Simmatrix.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../sparklearning/out/artifacts/SparkLearning_jar/SparkLearning.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

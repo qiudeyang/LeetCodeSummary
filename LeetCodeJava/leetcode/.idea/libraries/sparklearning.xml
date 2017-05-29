@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sparklearning">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../sparklearning/out/artifacts/WordCount_jar/sparklearning.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
