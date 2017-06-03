@@ -4,11 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../hadoop/hadoop.iml" filepath="$PROJECT_DIR$/../hadoop/hadoop.iml" />
       <module fileurl="file://$PROJECT_DIR$/leetcode.iml" filepath="$PROJECT_DIR$/leetcode.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../sparklearning/src/main/main.iml" filepath="$PROJECT_DIR$/../sparklearning/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../multiplethread/multiplethread.iml" filepath="$PROJECT_DIR$/../multiplethread/multiplethread.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../onlinejudge/onlinejudge.iml" filepath="$PROJECT_DIR$/../onlinejudge/onlinejudge.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../pointoffer/pointoffer.iml" filepath="$PROJECT_DIR$/../pointoffer/pointoffer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../test/test.iml" filepath="$PROJECT_DIR$/../test/test.iml" />
     </modules>
   </component>
 </project>
