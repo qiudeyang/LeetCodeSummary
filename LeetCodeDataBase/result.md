@@ -89,7 +89,9 @@ where 3 > (select count(distinct(e2.Salary)) from Employee e2 where e2.Salary > 
 
 SELECT class FROM courses GROUP BY class HAVING count(DISTINCT student)>=5;
 
+619. [Biggest Single Number](https://leetcode.com/problems/biggest-single-number/#/description)
 
+SELECT max(num) AS num FROM (SELECT num FROM number GROUP BY num HAVING count(*)=1) AS a;
 
 
 
