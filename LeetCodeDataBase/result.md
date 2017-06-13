@@ -93,9 +93,13 @@ SELECT class FROM courses GROUP BY class HAVING count(DISTINCT student)>=5;
 
 SELECT max(num) AS num FROM (SELECT num FROM number GROUP BY num HAVING count(*)=1) AS a;
 
+595. [Big Countries](https://leetcode.com/problems/big-countries/#/description)
 
+SELECT name,population,area FROM World WHERE area>3000000 OR population>25000000;
 
+601. [Human Traffic of Stadium](https://leetcode.com/problems/human-traffic-of-stadium/#/description)
 
+SELECT distinct s1.id,s1.date,s1.people FROM stadium s1,stadium s2,stadium s3 WHERE s1.people>=100 AND s2.people>=100 AND s3.people>=100 AND ((s2.id=s1.id+1 AND s3.id=s2.id+1) OR (s2.id=s1.id-1 and s3.id=s2.id-1) OR (s1.id=s2.id+1 AND s3.id=s1.id+1)) ORDER BY s1.id;
 
 
 
