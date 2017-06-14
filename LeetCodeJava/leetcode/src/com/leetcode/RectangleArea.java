@@ -8,9 +8,10 @@ class Solution223 {
         return 2;
     }
 }
+
 public class RectangleArea {
     public static void main(String[] args) {
         Solution223 solution223 = new Solution223();
-        System.out.println(solution223.computeArea(-3,0,3,4,0,-1,9,2));
+        System.out.println(solution223.computeArea(-3, 0, 3, 4, 0, -1, 9, 2));
     }
 }
