@@ -11,21 +11,22 @@ class Solution646 {
         Arrays.sort(pairs, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                if (o1[0] != o2[0]){
-                    return o1[0]-o2[0];
-                }else{
-                    return o1[1]-o2[1];
+                if (o1[0] != o2[0]) {
+                    return o1[0] - o2[0];
+                } else {
+                    return o1[1] - o2[1];
                 }
             }
         });
 
-
+        return 0;
     }
 }
+
 public class MaximumLengthOfPairChain {
     public static void main(String[] args) {
         Solution646 solution646 = new Solution646();
-        int[][] pairs = {{1,2},{2,3},{3,4}};
+        int[][] pairs = {{1, 2}, {2, 3}, {3, 4}};
         System.out.println(solution646.findLongestChain(pairs));
     }
 }
